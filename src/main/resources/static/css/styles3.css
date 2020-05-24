@@ -1,0 +1,52 @@
+/*profil obcy jako niezalogowany*/
+.profile-text{
+    min-height: 100px;
+    background-color: white;
+    border-radius: 20px;
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    font-weight: normal;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.avatar {
+	border-radius: 50%;
+	width: 100%;
+}
+
+#opis {
+	padding: 15px;
+}
+
+#umiejetnosci {
+	padding: 15px;
+}
+
+.options {
+	margin-left: 15px;
+	padding: 15px;
+}
+
+.dropbtn {
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtn:hover, .dropbtn:focus {
+  border: none;
+  cursor: pointer;
+  color: gray;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.show {display:block;}
+
+.avatar_edycja {
+	border-radius: 50%;
+	width: 100px;
+}

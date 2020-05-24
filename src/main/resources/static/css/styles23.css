@@ -1,0 +1,43 @@
+#name-project {
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+#info-project{
+    float:right;
+    margin-right:10px;
+                }
+.members {
+    float: left;
+    width: 33.3%;
+    min-width: 250px;
+    min-height: 250px;
+}
+
+.competences {
+    float: left;
+    width: 33.3%;
+    min-width: 250px;
+    min-height: 250px;
+}
+
+.files {
+    float: left;
+    width: 33.4%;
+    min-width: 250px;
+    min-height: 250px;
+}
+
+.masterbody {
+    background-color: lightgray;
+}
+
+.footer{
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    min-height: 50px;
+}

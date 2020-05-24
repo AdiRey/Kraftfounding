@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Projekty</title>
+    <meta name="description" content="Znajdz idealny projekt dla siebie" />
+    <meta name="keywords" content="projekt, projekty, politechnika-rzeszowska" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="../css/styles-sign.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/fontello.css" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap&subset=latin-ext" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body, html {
+            height: 100%;
+            font-family: 'Lato', sans-serif;
+            font-size: 20px;
+            margin: 0 !important;
+        }
+        .bg {
+            background-image: url("../img/sign-in.png");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="container">
+        <div class="content">
+            <div class="text">Zainwestuj swój czas, <br>
+                <span style="margin-left: 80px"><b>by zyskać coś więcej!</b></span></div>
+            <div style="clear: both"></div>
+            <div class="form-sign-in">
+                <div class="logo">
+                    <a class="navbar-brand" href="/"><img src="../img/full-logo.png" width="100%" height="50" class="d-inline-block mr-1 align-bottom" alt="Logo"></a>
+                </div>
+                <div class="text-sign-in">Zaloguj się</div>
+                <form name="login" method="post">
+                    <input name="username" type="text" placeholder="login" onfocus="this.placeholder=''" onblur="this.placeholder='login'" >
+                    <br><br>
+                    <input name="password" type="password" placeholder="hasło" onfocus="this.placeholder=''" onblur="this.placeholder='hasło'" >
+                    <br><br>
+                    <input class="submit" type="" value="Zaloguj się" onclick="loginAndSend()" >
+                </form>
+                <div class="footer-sign-in">
+                    Nie masz konta? <a href="/sign-up">Zarejestruj się!</a>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="footer-information">
+                    <div class="footer-information-text">
+                        <a href="#">Regulamin</a>
+                    </div>
+                    <div class="footer-information-text">
+                        <a href="#">Polityka prywatności</a>
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+.container{
+    width: 100%;
+    position: relative;
+    top: -730px;
+}
+.content{
+    width: 100%;
+}
+.logo{
+    height: 80px;
+    width: 80%;
+    min-width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 50px;
+}
+.text{
+    text-align: left;
+    color: white;
+    font-size: 50px;
+    width: 600px;
+    margin-right: 30px;
+    top: 120px;
+    right: 10px;
+    position: fixed;
+}
+#part-1{
+    display: block;
+    transition: display 1s ease-in-out;
+}
+#part-2{
+    display: none;
+    transition: opacity 1s ease-in-out;
+}
+#part-3{
+    display: none;
+    transition: opacity 1s ease-in-out;
+}
+#part-4{
+    display: none;
+    transition: opacity 1s ease-in-out;
+}
+.form-sign-in{
+    text-align: center;
+    width: 28%;
+    min-width: 300px;
+    min-height: 330px;
+    margin-left: 40px;
+    margin-top:10vh;
+}
+.text-sign-in{
+    font-size: 40px;
+}
+.footer-sign-in{
+    margin-top: 35px;
+    font-size: 14px;
+}
+.footer-sign-in > a{
+    text-decoration: none;
+    color: dodgerblue;
+}
+.footer{
+    bottom: 0;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 45px;
+}
+.footer-information{
+    width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.footer-information-text{
+    float: left;
+    margin-right: 60px;
+}
+.footer-information-text > a{
+    color: white;
+    text-decoration: none;
+}
+form{
+    margin-top: 50px;
+}
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=number]
+{
+    width: 280px;
+    height: 35px;
+    background-color: #efefef;
+    color: #666666;
+    border: 1px solid #dddddd;
+    border-radius: 20px;
+    font-size: 20px;
+    outline: none;
+    padding-left: 20px;
+}
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+select[name=subject]:focus,
+select[name=term]:focus
+{
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(0,216,174,1);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(0,216,174,1);
+    box-shadow: 0px 0px 5px 2px rgba(0,216,174,1);
+}
+input[type=submit]{
+    color: white;
+    width: 220px;
+    height: 45px;
+    margin-top: 25px;
+    font-size: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 30px;
+    outline: none;
+    background-image: linear-gradient(to right, #01e9bf, #01d0ef);
+}
+.submit{
+    text-align: center;
+    color: white;
+    width: 220px;
+    height: 45px;
+    margin-top: 25px;
+    font-size: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 30px;
+    outline: none;
+    background-image: linear-gradient(to right, #01e9bf, #01d0ef);
+}
+input:last-child:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to right, #00d8ae, #00c0de);
+}
+select[name=subject],
+select[name=term]
+{
+    width: 300px;
+    height: 40px;
+    background-color: #efefef;
+    color: #666666;
+    border: 1px solid #dddddd;
+    border-radius: 20px;
+    font-size: 20px;
+    outline: none;
+    padding-left: 20px;
+}
+select[name=abilities]{
+    width: 300px;
+    height: 200px;
+    background-color: #efefef;
+    color: #666666;
+    border: 1px solid #dddddd;
+    border-radius: 20px;
+    font-size: 20px;
+    outline: none;
+    padding-left: 20px;
+}
+select[name=abilities]::-webkit-scrollbar {
+    width: 10px;
+}
+
+select[name=abilities]::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+select[name=abilities]::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+    border-radius: 20px 20px;
+}
+textarea{
+    width: 260px;
+    height: 250px;
+    background-color: #efefef;
+    color: #666666;
+    border: 1px solid #dddddd;
+    border-radius: 20px;
+    font-size: 20px;
+    outline: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    resize: none;
+}
+textarea::-webkit-scrollbar {
+    width: 10px;
+}
+
+textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+    border-radius: 20px 20px;
+}

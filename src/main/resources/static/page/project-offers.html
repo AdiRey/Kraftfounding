@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Projekty</title>
+    <meta name="description" content="Znajdz idealny projekt dla siebie" />
+    <meta name="keywords" content="projekt, projekty, politechnika-rzeszowska" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles-op.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/fontello.css" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap&subset=latin-ext" rel="stylesheet" />
+</head>
+<body onload="checkLogin()">
+    <header>
+
+        <nav class="navbar navbar-dark bg-jumpers navbar-expand-xl">
+
+            <a class="navbar-brand" href="/"><img src="img/logo.png" width="30" height="30" class="d-inline-block mr-1 align-bottom" alt="Logo"></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse " id="mainmenu" >
+
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link nav-color" href="/projects-offers"> Oferty projektowe </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link nav-color" href="/profiles"> Profile </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link nav-color" href="/faq"> FAQ </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link nav-color" href="/youtube" target="_blank"> YouTube </a>
+                    </li>
+
+                </ul>
+
+                <div class="user-interface">
+                    <div class="d-inline-block mr-1 align-middle">
+                        <a href="/sign-up" class="sign-up-link nav-color">Zarejestruj sie</a>
+                    </div>
+                    <div class="sign-in d-inline-block mr-1 align-middle">
+                        <a href="/sign-in">Zaloguj sie</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="search">
+                <div class="texth1">
+				Znajdź projekt 
+				<form method="post"  >
+                    <input type="text" placeholder="Wpisz słowo kluczowe..." onfocus="this.placeholder=''" onblur="this.placeholder='Wpisz słowo kluczowe...'">
+                </form>
+                </div>
+				<div class="drop-down-menu">
+			
+					<select id="drop">
+						<option value="disabled" disabled selected>Parametr</option>
+                        <option value="1">Parametr 1</option>
+                        <option value="2">Parametr 2</option>
+                        <option value="3">Parametr 3</option>
+                        <option value="4">Parametr 4</option>
+                        <option value="5">Parametr 5</option>
+                        <option value="6">Parametr 6</option>
+					</select>
+	
+				</div>
+				<div class="drop-down-menu">
+					
+						<select id="drop">
+						<option value="disabled" disabled selected>Parametr</option>
+                        <option value="1">Parametr 1</option>
+                        <option value="2">Parametr 2</option>
+                        <option value="3">Parametr 3</option>
+                        <option value="4">Parametr 4</option>
+                        <option value="5">Parametr 5</option>
+                        <option value="6">Parametr 6</option>
+					</select>
+		
+				</div>
+				
+				<div class="button-search" >
+                            <a href="#">Wyszukaj</a>
+					</div>
+					<div style="clear: both;"></div> 
+                    </div>
+					
+            <div class="content-projects">
+                <div class="project">
+                    <div class="header-project">
+                        <div class="name-project-d-inline-block" >
+                            Nazwa projektu
+                        </div>
+                        <div class="info-project-d-inline-block">
+                            <div class="author-project-d-inline-block">
+                                Adam Kowalski
+                            </div>
+                            <div class="date-project-d-inline-block">
+                                01/01/2020
+                            </div>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                    <div class="body-project">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae risus sem. Suspendisse
+                        potenti. Quisque at nunc volutpat, consequat diam non, consectetur diam. Vivamus enim orci,
+                        placerat non placerat sed, tincidunt et mauris. Nullam gravida tristique sem ut laoreet.
+                        Aliquam vitae elit ut tellus vehicula ornare. Nullam euismod ipsum at fermentum pulvinar,
+                        placerat non placerat sed, tincidunt et mauris. Nullam gravida tristique sem ut laoreet.
+                        Aliquam vitae elit ut tellus vehicula ornare. Nullam euismod ipsum at fermentum pulvinar
+                    </div>
+                    <div class="footer-project">
+                        <div class="button-check">
+                            <a href="#">Sprawdź</a>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="header-project">
+                        <div class="name-project-d-inline-block">
+                            Nazwa projektu
+                        </div>
+                        <div class="info-project-d-inline-block">
+                            <div class="author-project-d-inline-block">
+                                Marek Kowalski
+                            </div>
+                            <div class="date-project-d-inline-block">
+                                01/01/2020
+                            </div>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                    <div class="body-project">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae risus sem. Suspendisse
+                        potenti. Quisque at nunc volutpat, consequat diam non, consectetur diam. Vivamus enim orci,
+                        placerat non placerat sed, tincidunt et mauris. Nullam gravida tristique sem ut laoreet.
+                        Aliquam vitae elit ut tellus vehicula ornare. Nullam euismod ipsum at fermentum pulvinar,
+                        placerat non placerat sed, tincidunt et mauris. Nullam gravida tristique sem ut laoreet.
+                        Aliquam vitae elit ut tellus vehicula ornare. Nullam euismod ipsum at fermentum pulvinar
+                    </div>
+                    <div class="footer-project">
+                        <div class="button-check">
+                            <a href="#">Sprawdź</a>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="header-project">
+                        <div class="name-project-d-inline-block">
+                            Nazwa projektu
+                        </div>
+                        <div class="info-project-d-inline-block">
+                            <div class="author-project-d-inline-block">
+                                Marek Kowalski
+                            </div>
+                            <div class="date-project-d-inline-block">
+                                01/01/2020
+                            </div>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                    <div class="body-project">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae risus sem. Suspendisse
+                        potenti. Quisque at nunc volutpat, consequat diam non, consectetur diam. Vivamus enim orci,
+                        placerat non placerat sed, tincidunt et mauris. Nullam gravida tristique sem ut laoreet.
+                        Aliquam vitae elit ut tellus vehicula ornare. Nullam euismod ipsum at fermentum pulvinar,
+                        placerat non placerat sed, tincidunt et mauris. Nullam gravida tristique sem ut laoreet.
+                        Aliquam vitae elit ut tellus vehicula ornare. Nullam euismod ipsum at fermentum pulvinar
+                    </div>
+                    <div class="footer-project">
+                        <div class="button-check">
+                            <a href="#">Sprawdź</a>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                </div>
+    </main>
+    <footer>
+        <div class="footer">
+            Copyright © 2020 Kraftfunding S.A. Wszelkie prawa zastrzeżone.
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+	<script src="../js/main.js"></script>
+</body>
+</html>

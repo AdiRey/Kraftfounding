@@ -1,0 +1,141 @@
+body{
+    /*background-color: #303030;*/
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    margin: 0 !important;
+    text-align: center;
+    background-image: url("../img/grafika.png");
+    background-size: cover;
+    background-attachment: fixed;
+}
+a{
+    color: black;
+    text-decoration: none !important;
+}
+/*Nawigacja strony*/
+.navbar{
+    width: 100%;
+    background-color: white;
+    min-height: 90px;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+.navbar-toggler {
+    background-image: linear-gradient(to right, #01e9bf, #01d0ef);
+}
+.nav-color{
+    color: black !important;
+}
+.sign-up-link{
+    padding: 0;
+    margin-right: 30px;
+}
+.sign-in > a{
+    color: white;
+    display: block;
+    width: 220px;
+    padding: 8px;
+    border-radius: 30px;
+    background-image: linear-gradient(to right, #01e9bf, #01d0ef);
+    text-align: center;
+}
+.nav-item{
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+}
+.navbar-brand{
+    margin-right: 6rem;
+}
+
+/*Główna część strony*/
+.project{
+    margin-top: 100px;
+    min-height: 100px;
+    background-color: #E0E0E0;
+    border-radius: 15px;
+    margin-bottom: 50px;
+	color: black;
+}
+.add-project-navbar
+{
+    min-height: 75px;
+    background-image: linear-gradient(to right, #01e9bf, #01d0ef);
+    text-align: center;
+    border-radius: 15px;
+    color: white;
+    font-size: 32px;
+    padding-top: 10px;
+}
+.project-name
+{
+    text-align: left;
+    color: #606060;
+    padding-top: 10px;
+    padding-left: 20px;
+    font-size: 20px;
+}
+.input-name
+{
+    width: 500px;
+    background-color: #A0A0A0;
+    border-radius: 15px;
+    margin-top: 10px;
+    color: black;
+    padding-left: 15px;
+}
+
+.button_add
+{
+    min-height: 75px;
+    background-color: white;
+    border-radius: 15px;
+}
+.add-project
+{
+    margin-top: 20px;
+    border-radius: 20px;
+    background-image: linear-gradient(to right, #01e9bf, #01d0ef);
+    width: 200px;
+    color: white;
+}
+
+.input-description
+{
+    width: 1000px;
+    min-height: 100px;
+    background-color: #A0A0A0;
+    border-radius: 15px;
+    margin-top: 10px;
+    color: black;
+    padding-left: 15px;
+}
+
+#to_add
+{
+    width: 200px;
+    min-height: 200px;
+    background-color: #A0A0A0;
+    border-radius: 15px;
+}
+#added
+{
+    margin-left: 100px;
+    width: 200px;
+    min-height: 200px;
+    background-color: #A0A0A0;
+    border-radius: 15px;
+}
+input:focus
+{
+    outline: none;
+}
+textarea:focus
+{
+    outline: none;
+}
+select:focus
+{
+    outline: none;
+}
+
