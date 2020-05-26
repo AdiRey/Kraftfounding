@@ -17,6 +17,7 @@ import pl.kraft.student.service.StudentService;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,6 +28,11 @@ public class StudentController {
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
+    }
+
+    @GetMapping("/login/ticket")
+    public String getTicket(@RequestParam(name = "response") String txt) {
+        return Base64.getDecoder().decode(txt).toString();
     }
 
     @PostMapping("")

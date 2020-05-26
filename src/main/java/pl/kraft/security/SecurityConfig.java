@@ -36,11 +36,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
                 .addFilterAfter(new JwtVerifierFilter(), JwtUsernameAndPasswordAuthenticationFilter.class)
                 .authorizeRequests().antMatchers(
+                "/api/subjects",
+                "/static/**",
                 "/css/**",
                 "/img/**",
                 "/js/**",
+                "/ckeditor/**",
                 "/font/**",
-                "/page/**",
+                "/page/index.html",
                 "/",
                 "/sign-up",
                 "/sign-in",
@@ -51,10 +54,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/project",
                 "/edycja",
                 "/addProject",
+                "/loginx",
+                "/api/students/login/ticket",
                 "/youtube",
                 "/api/projects/threeAdded/projects",
-                "/api/subjects?type=unique",
-                "/api/subjects?type=all",
                 "/api/abilities").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/students").permitAll()
                 .anyRequest()

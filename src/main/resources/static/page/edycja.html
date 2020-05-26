@@ -12,133 +12,135 @@
     <link rel="stylesheet" href="../css/styles3.css" type="text/css"/>
     <link rel="stylesheet" href="../css/fontello.css" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap&subset=latin-ext" rel="stylesheet" />
-    <script src="../js/edytuj.js"></script>
-
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../ckeditor/ckeditor.js"></script>
+    <script src="../ckeditor/adapters/jquery.js"></script>
 </head>
-<body onload="test()">
-<header>
+<body onload="checkLogin()">
+    <header>
 
-    <nav class="navbar navbar-dark bg-jumpers navbar-expand-xl">
+        <nav class="navbar navbar-dark bg-jumpers navbar-expand-xl">
 
-        <a class="navbar-brand" href="/"><img src="../img/logo.png" width="60" height="60" class="d-inline-block mr-1 align-bottom" alt="Logo"></a>
+            <a class="navbar-brand" href="#"><img src="../img/logo.png" width="60" height="60" class="d-inline-block mr-1 align-bottom" alt="Logo"></a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse " id="mainmenu">
+            <div class="collapse navbar-collapse " id="mainmenu">
 
-            <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto">
 
-                <li class="nav-item active">
-                    <a class="nav-link nav-color" href="/projects-offers"> Oferty projektowe </a>
-                </li>
+                    <li class="nav-item active">
+                        <a class="nav-link nav-color" href="#"> Oferty projektowe </a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link nav-color" href="/profiles"> Profile </a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-color" href="#"> Profile </a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link nav-color" href="/faq"> FAQ </a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-color" href="#"> FAQ </a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link nav-color" href="/youtube" target="_blank"> YouTube </a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-color" href="#"> YouTube </a>
+                    </li>
 
-            </ul>
+                </ul>
 
-            <div id="user-logout" class="user-interface" style="display: none;">
-                <div class="d-inline-block mr-1 align-middle">
-                    <a href="/sign-up" class="sign-up-link nav-color">Zarejestruj sie</a>
-                </div>
-                <div class="sign-in d-inline-block mr-1 align-middle">
-                    <a href="/login">Zaloguj sie</a>
-                </div>
-            </div>
-
-            <div id="user-login" class="user-interface-login" style="display: block;">
-                <div class="d-inline-block mr-1 align-middle">
-                    <a href="/my-profile" id="user-login-menu" class="dropbtn sign-up-link nav-color user-login" onclick="usermenu()">Adam Kowalski</a>
-                    <div class="dropdown-user-menu" id="userDropdown">
-                        <a href="/my-profile">Twój profil</a>
-                        <a href="#">Twoje projekty</a>
-                        <a href="#">Ulubione</a>
-                        <a href="#">XYZ</a>
-                        <a href="/logout">Wyloguj</a>
+                <div id="user-logout" class="user-interface" style="display: none;">
+                    <div class="d-inline-block mr-1 align-middle">
+                        <a href="#" class="sign-up-link nav-color">Zarejestruj sie</a>
+                    </div>
+                    <div class="sign-in d-inline-block mr-1 align-middle">
+                        <a href="#">Zaloguj sie</a>
                     </div>
                 </div>
+
+                <div id="user-login" class="user-interface-login" style="display: block;">
+                    <div class="d-inline-block mr-1 align-middle">
+                        <a href="#" id="user-login-menu" class="dropbtn sign-up-link nav-color user-login" onclick="usermenu()">Adam Kowalski</a>
+                        <div class="dropdown-user-menu" id="userDropdown">
+                            <a href="#">Twój profil</a>
+                            <a href="#">Twoje projekty</a>
+                            <a href="#">Ulubione</a>
+                            <a href="#">XYZ</a>
+                            <a href="#">Wyloguj</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
+        </nav>
+
+    </header>
+
+    <main>
+        <div class="container">
+			<div style="margin-top: 120px;">
+				<div class="profile-text">
+					<form name="edycja-profilu" action="" onsubmit="return validateForm()">
+						<div>
+							<img class="avatar_edycja" src="..\img\avatar.jpg">
+							Zmień awatar:
+							<button type="button">Przeglądaj</button>
+						</div>
+						<div style="margin-top: 15px">
+							<label for="imie">Imię</label>
+							<input id="im" type="text" name="imie" required>
+							<label for="nazwisko">Nazwisko</label>
+							<input id="naz" type="text" name="nazwisko" required>
+                        </div>
+                        <div style="padding-top: 10px;">
+                            <label for="kier">Kierunek:</label>
+                            <select id="kier">
+                            </select>
+                        </div>
+						<div style="margin-top: 15px">
+                            <label for="op">Opis</label>
+                            <textarea id="op" class="ckeditor" name="op"></textarea>
+						</div>
+                        <div style="margin-top: 15px">
+                                <fieldset id="umy">
+                                </fieldset>
+                        </div>
+                        <div style="margin-top: 15px">
+							<input type="submit" value="Zapisz">
+							<a href="my-profile.html" class="button">Anuluj</a>
+                        </div>
+                        </form>
+                    <form name="edycja-hasla" action="" onsubmit="return validateFormHasla()" method="post">
+						<div style="margin-top: 15px">
+							<label for="stare_haslo">Stare hasło</label>
+							<input type="password" id="stare_haslo" name="stare_haslo" required>
+							<label for="nowe_hasloa">Nowe hasło</label>
+							<input type="password" id="nowe_hasloa" name="nowe_hasloa" required>
+							<label for="nowe_haslob">Powtórz nowe hasło</label>
+							<input type="password" id="nowe_haslob" name="nowe_haslob" required>
+						</div>
+						<div style="margin-top: 15px">
+							<input type="submit" value="Zapisz">
+							<a href="my-profile.html" class="button">Anuluj</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+    </main>
+    <footer>
+        <div class="footer">
+            Copyright © 2020 Kraftfunding S.A. Wszelkie prawa zastrzeżone.
         </div>
+    </footer>
 
-    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
-</header>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/edytuj.js"></script>
+    <script src="../js/jwt-decode.min.js"></script>
 
-<main>
-    <div class="container">
-        <div style="margin-top: 120px;">
-            <div class="profile-text">
-                <form name="edycja-profilu" action="" onsubmit="return validateForm()" method="post">
-                    <div>
-                        <img class="avatar_edycja" src="..\img\avatar.jpg">
-                        Zmień awatar:
-                        <button type="button">Przeglądaj</button>
-                    </div>
-                    <div style="margin-top: 15px">
-                        <label for="imie">Imię</label>
-                        <input id="im" type="text" name="imie" required>
-                        <label for="nazwisko">Nazwisko</label>
-                        <input id="naz" type="text" name="nazwisko" required>
-                    </div>
-                    <div style="padding-top: 10px;">
-                        <label for="kier">Kierunek:</label>
-                        <select id="kier">
-                        </select>
-                    </div>
-                    <div style="margin-top: 15px">
-                        <label for="opis">Opis</label>
-                        <textarea id="op" name="opis"></textarea>
-                    </div>
-                    <div style="margin-top: 15px">
-                        <fieldset id="umy">
-                        </fieldset>
-                    </div>
-                    <div style="margin-top: 15px">
-                        <input type="submit" value="Zapisz">
-                        <a href="/my-profile" class="button">Anuluj</a>
-                    </div>
-                </form>
-                <form name="edycja-hasla" action="" onsubmit="return validateFormHasla()" method="post">
-                    <div style="margin-top: 15px">
-                        <label for="stare_haslo">Stare hasło</label>
-                        <input type="password" id="stare_haslo" name="stare_haslo" required>
-                        <label for="nowe_hasloa">Nowe hasło</label>
-                        <input type="password" id="nowe_hasloa" name="nowe_hasloa" required>
-                        <label for="nowe_haslob">Powtórz nowe hasło</label>
-                        <input type="password" id="nowe_haslob" name="nowe_haslob" required>
-                    </div>
-                    <div style="margin-top: 15px">
-                        <input type="submit" value="Zapisz">
-                        <a href="/my-profile" class="button">Anuluj</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</main>
-<footer>
-    <div class="footer">
-        Copyright © 2020 Kraftfunding S.A. Wszelkie prawa zastrzeżone.
-    </div>
-</footer>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/main.js"></script>
 </body>
 </html>

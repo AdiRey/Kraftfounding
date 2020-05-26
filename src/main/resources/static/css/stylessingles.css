@@ -1,0 +1,26 @@
+#name-project {
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+#info-project{
+    float:right;
+    margin-right:10px;
+                }
+
+.footer{
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    min-height: 50px;
+}
+.body-project{
+    background:lightgray;
+}
+
+.opis {
+    min-height: 100px;
+}

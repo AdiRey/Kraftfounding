@@ -127,7 +127,7 @@ function sendLogin() {
         .then(res => {
             token = res;
             console.log(token);
-            sessionStorage.setItem("Authorization", token);
+            localStorage.setItem("Authorization", token);
             window.location.href='/';
         })
         .catch(error => console.log("Błąd: ", error));
@@ -172,7 +172,8 @@ function funLoadSubject(){
     }
     fetch("/api/subjects?type=all")
         .then(response => response.json())
-        .then(response =>{
+        .then(response => {
+            console.log(response);
             subject = JSON.parse(JSON.stringify(response));
             for (let i in subject){
                 optionForm.options[optionForm.options.length] = new Option(subject[i].name);
