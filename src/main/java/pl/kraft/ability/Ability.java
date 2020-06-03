@@ -2,6 +2,7 @@ package pl.kraft.ability;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import pl.kraft.academicWorker.AcademicWorker;
 import pl.kraft.project.Project;
 import pl.kraft.student.Student;
 
@@ -24,6 +25,9 @@ public class Ability {
     @ManyToMany(fetch = FetchType.LAZY)
     @Fetch(FetchMode.SELECT)
     private List<Student> students = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    @Fetch(FetchMode.SELECT)
+    private List<AcademicWorker> workers = new ArrayList<>();
     @JoinTable(name = "project_student",
             joinColumns = {@JoinColumn(name = "id_ability_proj", referencedColumnName = "id_ability")},
             inverseJoinColumns = {@JoinColumn(name = "id_project_ab", referencedColumnName = "id_project")})
@@ -36,6 +40,10 @@ public class Ability {
 
     public void addStudent(Student student) {
         this.students.add(student);
+    }
+
+    public void addAcademicWorker(AcademicWorker academicWorker) {
+        this.workers.add(academicWorker);
     }
 
     public void addProject(Project project) {
@@ -72,5 +80,13 @@ public class Ability {
 
     public void setProjects(List<Project> projects) {
         this.projects = projects;
+    }
+
+    public List<AcademicWorker> getWorkers() {
+        return workers;
+    }
+
+    public void setWorkers(List<AcademicWorker> workers) {
+        this.workers = workers;
     }
 }

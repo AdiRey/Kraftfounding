@@ -31,9 +31,14 @@ public class OthersRedirectController {
         return "forward:page/my-profile.html";
     }
 
-    @GetMapping("/sign-up")
-    public String signUpRedirect() {
+    @GetMapping("/sign-up-student")
+    public String signUpRedirectStudent() {
         return "forward:page/sign-up.html";
+    }
+
+    @GetMapping("/sign-up-worker")
+    public String signUpRedirectWorker() {
+        return "forward:page/sign-up-worker.html";
     }
 
     @GetMapping("/sign-in")

@@ -106,9 +106,7 @@ function send() {
     })
         .then(res => res.json())
         .then(res => {
-            alert("Zarejestrowano")
-            console.log("Dodałem użytkownika:");
-            console.log(res);
+            window.location.href = '/sign-in';
         })
         .catch(error => console.log("Błąd: ", error));
 }
@@ -170,14 +168,16 @@ function funLoadSubject(){
         "name":"",
         "term":""
     }
-    fetch("/api/subjects?type=all")
+    fetch("/api/subjects?type=unique")
         .then(response => response.json())
         .then(response => {
             console.log(response);
             subject = JSON.parse(JSON.stringify(response));
             for (let i in subject){
                 optionForm.options[optionForm.options.length] = new Option(subject[i].name);
-                optionFormTerm.options[optionFormTerm.options.length] = new Option(subject[i].term);
+            }
+            for (let i = 1; i <= 7; i++) {
+                optionFormTerm.options[optionFormTerm.options.length] = new Option(i);
             }
         })
 }
@@ -196,4 +196,85 @@ function funLoadAbilities(){
                 optionForm.options[optionForm.options.length] = new Option(ability[i].ability);
             }
         })
+}
+
+let worker = {
+    "login":null,
+    "password":null,
+    "email":null,
+    "name":null,
+    "surname":null,
+    "abilities":[],
+    "interests":null
+}
+let workerDataString;
+function sendworker() {
+    fetch("/api/workers", {
+        method: "post",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: workerDataString
+    })
+        .then(res => res.json())
+        .then(res => {
+            window.location.href="/sign-in";
+        })
+        .catch(error => console.log("Błąd: ", error));
+}
+
+function JSONFromFormworker(){
+    worker.login = document.forms['register'].login.value;
+    worker.password = document.forms['register'].password.value;
+    worker.email = document.forms['register'].email.value;
+    worker.name = document.forms['register'].firstname.value;
+    worker.surname = document.forms['register'].lastname.value;
+    let poleSelect = document.forms['register'].abilities;
+    for (let i=0; i<poleSelect.length; i++){
+        if (poleSelect.options[i].selected){
+            worker.abilities.push({"ability":poleSelect.options[i].value})
+        }
+    }
+    worker.interests = document.forms['register'].description.value;
+
+    workerDataString = JSON.stringify(worker);
+    console.log(workerDataString);
+}
+
+function HideContentworker(d)
+{
+    switch (d) {
+        case 'part-1':
+            if(test1()){
+                document.getElementById('part-1').style.display = "none";
+                document.getElementById('part-2').style.display = "block";
+                funLoadAbilities();
+            }
+            break;
+        case 'part-2':
+            if (test4()){
+                document.getElementById('part-2').style.display = "none";
+                document.getElementById('part-3').style.display = "block";
+                //fun();
+            }
+            break;
+        case 'part-3':
+            document.getElementById('part-3').style.display = "none";
+            document.getElementById('part-4').style.display = "block";
+            break;
+        case 'part-4':
+            JSONFromFormworker();
+            sendworker();
+            break;
+        default:
+            break;
+    }
+}
+function test4(){
+    if(document.forms['register'].firstname.value === "")
+    {alert("Nie podałeś imienia"); return false;}
+    else if(document.forms['register'].lastname.value === "")
+    {alert("Nie podałeś nazwiska"); return false;}
+    else
+        return true;
 }

@@ -38,9 +38,15 @@ public class ProjectController {
     @GetMapping("")
     @ApiOperation(value = "Get all projects paginated", notes = "Test 1 2 3")
     public Page<ProjectDto> getAllProjects(@RequestParam(required = false, defaultValue = "0") final Integer page,
+                                       @RequestParam(required = false, defaultValue = "20") final Integer size,
                                        @RequestParam(required = false, defaultValue = "ASC") final String sort,
-                                       @RequestParam(required = false, defaultValue = "") final String filter) {
-        return projectService.getAllNotCompletedProjects(page, sort, filter);
+                                       @RequestParam(required = false, defaultValue = "") final String filter,
+                                           @RequestBody(required = false) final AbilityDto ability) {
+        String abilityName = "";
+        if (ability != null) {
+            abilityName = ability.getAbility();
+        }
+        return projectService.getAllNotCompletedProjects(page, size, sort, filter, abilityName);
     }
 
     @GetMapping("/{id}")

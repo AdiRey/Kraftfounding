@@ -1,6 +1,7 @@
 package pl.kraft.project;
 
 import pl.kraft.ability.Ability;
+import pl.kraft.academicWorker.AcademicWorker;
 import pl.kraft.student.Student;
 
 import javax.persistence.*;
@@ -32,6 +33,8 @@ public class Project {
             inverseJoinColumns = {@JoinColumn(name = "id_student_pr", referencedColumnName = "id_student")})
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Student> studentList = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<AcademicWorker> workers = new ArrayList<>();
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Ability> abilities = new ArrayList<>();
 
@@ -118,5 +121,17 @@ public class Project {
 
     public void setAbilities(List<Ability> abilities) {
         this.abilities = abilities;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
+    public List<AcademicWorker> getWorkers() {
+        return workers;
+    }
+
+    public void setWorkers(List<AcademicWorker> workers) {
+        this.workers = workers;
     }
 }

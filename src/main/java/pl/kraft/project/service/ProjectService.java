@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ProjectService {
     List<ProjectDto> getThreeLastAddedProjects();
-    Page<ProjectDto> getAllNotCompletedProjects(int numberOfPage, String sortText, String text);
+    Page<ProjectDto> getAllNotCompletedProjects(int numberOfPage, int size, String sortText, String text, String abilityName);
     ProjectDto getProjectById(Long id);
     ProjectDto saveProject(ProjectRegisterDto dto);
     List<AbilityDto> getProjectAbilities(Long id);

@@ -1,4 +1,4 @@
-userIcon = '../ img / logo.png';
+userIcon = '../img/icon.png';
 function wypisz(item) {
     el = document.createElement("li");
     el.style.float = "left";
@@ -7,7 +7,7 @@ function wypisz(item) {
     el.style.listStyleType = 'none';
     el2 = document.createElement("img");
     el2.style.float = "left";
-    el2.setAttribute("src", "../img/abc.jpg");
+    el2.setAttribute("src", userIcon);
     el2.style.width = '20px';
     el2.style.height = '20px';
     el3 = document.createElement("span");
@@ -87,10 +87,11 @@ fetch("/api/projects/" + identyfikator, {
     })
     .then(response => response.json())
     .then(response => {
-        userData = JSON.parse(JSON.stringify(response));
-        document.querySelectorAll('.body-project')[0].textContent = userData[0].description;
-        document.querySelectorAll('#name-project')[0].textContent = userData[0].title;
-        document.querySelectorAll('.date-project')[0].textContent = userData[0].date;
+        projectData = JSON.parse(JSON.stringify(response));
+        console.log(projectData.description);
+        document.querySelectorAll('.body-project')[0].textContent = projectData.description;
+        document.querySelectorAll('#name-project')[0].textContent = projectData.title;
+        document.querySelectorAll('.date-project')[0].textContent = projectData.date;
     })
     .catch(error => {
         console.error(error);

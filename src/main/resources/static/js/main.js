@@ -31,19 +31,7 @@ fetch("/api/projects/threeAdded/projects", {
             document.querySelectorAll('.name-project')[i].textContent = projectData[i].title;
         }
     });
-function checkLogin(){
-    let authentication = localStorage.getItem("Authorization");
-    if (authentication === null){
-        document.getElementById("user-logout").style.display = "block";
-        document.getElementById("user-login").style.display = "none";
-    }else{
-        let decoded = jwt_decode(authentication.substr(7));
-        user.name = decoded.sub;
-        document.getElementById("user-login-menu").textContent = user.name;
-        document.getElementById("user-logout").style.display = "none";
-        document.getElementById("user-login").style.display = "block";
-    }
-}
+
 
 
 function usermenu() {

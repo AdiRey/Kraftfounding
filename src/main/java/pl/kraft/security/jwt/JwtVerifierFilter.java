@@ -1,10 +1,7 @@
 package pl.kraft.security.jwt;
 
 import com.google.common.base.Strings;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.JwtException;
-import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -47,8 +44,8 @@ public class JwtVerifierFilter extends OncePerRequestFilter {
             );
             SecurityContextHolder.getContext().setAuthentication(authentication);
             httpServletResponse.addHeader("Authorization", "Bearer " + token);
-        } catch (JwtException e) {
-            throw new IllegalStateException(e);
+        } catch (ExpiredJwtException e) {
+            httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
         }
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }

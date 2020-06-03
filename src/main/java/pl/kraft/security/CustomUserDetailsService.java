@@ -1,12 +1,13 @@
 package pl.kraft.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+import pl.kraft.academicWorker.AcademicWorker;
+import pl.kraft.academicWorker.AcademicWorkerRepository;
 import pl.kraft.student.Student;
 import pl.kraft.student.StudentRepository;
 
@@ -19,30 +20,50 @@ import java.util.Set;
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final StudentRepository studentRepository;
+    private final AcademicWorkerRepository academicWorkerRepository;
 
-    @Autowired
-    public  CustomUserDetailsService(StudentRepository studentRepository) {
+    public CustomUserDetailsService(StudentRepository studentRepository, AcademicWorkerRepository academicWorkerRepository) {
         this.studentRepository = studentRepository;
+        this.academicWorkerRepository = academicWorkerRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Student> foundOne;
+        Optional<Student> foundStudent;
+
         if (username.contains("@")) {
-            foundOne = studentRepository.findByEmail(username);
+            foundStudent = studentRepository.findByEmail(username);
         } else {
-            foundOne = studentRepository.findByLogin(username);
+            foundStudent = studentRepository.findByLogin(username);
         }
 
-        if (foundOne.isEmpty())
-            throw new UsernameNotFoundException("Student not found");
+        if (foundStudent.isPresent()) {
+            Student student = foundStudent.get();
+            return new org.springframework.security.core.userdetails.User(
+                    student.getEmail(),
+                    student.getPassword(),
+                    convertAuthorities(List.of("student", "prz", "kraft"))
+            );
+        }
 
-        Student student = foundOne.get();
-        return new org.springframework.security.core.userdetails.User(
-                        student.getEmail(),
-                        student.getPassword(),
-                        convertAuthorities(List.of("student", "prz", "kraft")) // TODO STUDENT 1/1, ACADEMIC WORKER 0/1
-                );
+        Optional<AcademicWorker> foundWorker;
+
+        if (username.contains("@")) {
+            foundWorker = academicWorkerRepository.findByEmail(username);
+        } else {
+            foundWorker = academicWorkerRepository.findByLogin(username);
+        }
+
+        if (foundWorker.isPresent()) {
+            AcademicWorker academicWorker = foundWorker.get();
+            return new org.springframework.security.core.userdetails.User(
+                    academicWorker.getEmail(),
+                    academicWorker.getPassword(),
+                    convertAuthorities(List.of("worker", "prz", "knowledge"))
+            );
+        }
+
+        throw new UsernameNotFoundException("Student not found");
     }
 
     private Set<GrantedAuthority> convertAuthorities(List<String> authorityList) {

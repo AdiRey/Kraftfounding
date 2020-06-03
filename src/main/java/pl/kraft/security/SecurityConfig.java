@@ -45,7 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/font/**",
                 "/page/index.html",
                 "/",
-                "/sign-up",
+                "/sign-up-student",
+                "/sign-up-worker",
                 "/sign-in",
                 "/faq",
                 "/projects-offers",
@@ -58,8 +59,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/api/students/login/ticket",
                 "/youtube",
                 "/api/projects/threeAdded/projects",
+                "/v2/api-docs",
+                "/configuration/ui",
+                "/swagger-resources/**",
+                "/configuration/security",
+                "/swagger-ui.html",
+                "/webjars/**",
                 "/api/abilities").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/students").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/workers").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and().formLogin()
