@@ -13,16 +13,17 @@ public interface ProjectRepository extends PagingAndSortingRepository<Project, L
             "LEFT JOIN project_abilities pa ON pa.project_id_project = p.id_project " +
             "INNER JOIN ability a ON pa.abilities_id_ability = a.id_ability " +
             "WHERE " +
-            "(LOWER(p.title) LIKE LOWER('%:title%') " +
-            "OR a.ability = ':ability') " +
-            "AND p.completed = 'false'",
+            "(LOWER(p.title) LIKE LOWER(:title) " +
+            "OR a.ability = :ability) " +
+            "AND p.completed = 'false' ",
             countQuery = "SELECT COUNT(*) FROM project p  " +
                     "LEFT JOIN project_abilities pa ON pa.project_id_project = p.id_project " +
                     "INNER JOIN ability a ON pa.abilities_id_ability = a.id_ability " +
                     "WHERE " +
-                    "(LOWER(p.title) LIKE LOWER('%:title%') " +
-                    "OR a.ability = ':ability') " +
-                    "AND p.completed = 'false'", nativeQuery = true)
+                    "(LOWER(p.title) LIKE LOWER(:title) " +
+                    "OR a.ability = :ability) " +
+                    "AND p.completed = 'false' GROUP BY p.id_project",
+            nativeQuery = true)
     Page<Project> findAllPagination(@Param("title") String title, @Param("ability") String ability, Pageable pageable);
     List<Project> findTop3ByOrderByDateDesc();
 }
