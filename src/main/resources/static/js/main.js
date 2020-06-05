@@ -1,4 +1,5 @@
 let projectData = {
+    "id":null,
     "date":null,
     "description":"",
     "studentDto": {
@@ -29,6 +30,7 @@ fetch("/api/projects/threeAdded/projects", {
             document.querySelectorAll('.body-project')[i].textContent = projectData[i].description;
             document.querySelectorAll('.author-project')[i].textContent = projectData[i].studentDto.name + " " + projectData[i].studentDto.surname;
             document.querySelectorAll('.name-project')[i].textContent = projectData[i].title;
+            document.getElementById("link" + i).href = "/project?id=" + projectData[i].id;
         }
     });
 

@@ -53,9 +53,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/profiles",
                 "/my-profile",
                 "/project",
-                "/edycja",
-                "/addProject",
+                "/edit",
+                "/add-project",
+                "/api/file/**",
                 "/loginx",
+                "/my-projects",
                 "/api/students/login/ticket",
                 "/youtube",
                 "/api/projects/threeAdded/projects",
@@ -68,6 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/api/abilities").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/students").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/workers").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/file").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and().formLogin()

@@ -2,7 +2,6 @@ package pl.kraft.web.redirectController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class OthersRedirectController {
@@ -24,6 +23,11 @@ public class OthersRedirectController {
     @GetMapping("/profiles")
     public String profilesRedirect() {
         return "forward:page/profile.html";
+    }
+
+    @GetMapping("/my-projects")
+    public String myProjectsRedirect() {
+        return "forward:page/my-projects.html";
     }
 
     @GetMapping("/my-profile")
@@ -51,12 +55,12 @@ public class OthersRedirectController {
         return "forward:page/show_single_project.html";
     }
 
-    @GetMapping("/edycja")
+    @GetMapping("/edit")
     public String editProfileRedirect() {
         return "forward:page/edycja.html";
     }
 
-    @GetMapping("/addProject")
+    @GetMapping("/add-project")
     public String addProjectRedirect() {
         return "forward:page/add-project.html";
     }

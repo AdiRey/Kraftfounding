@@ -2,6 +2,7 @@ package pl.kraft.project;
 
 import pl.kraft.ability.Ability;
 import pl.kraft.academicWorker.AcademicWorker;
+import pl.kraft.file.FileEntity;
 import pl.kraft.student.Student;
 
 import javax.persistence.*;
@@ -37,6 +38,8 @@ public class Project {
     private List<AcademicWorker> workers = new ArrayList<>();
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Ability> abilities = new ArrayList<>();
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
+    private List<FileEntity> files = new ArrayList<>();
 
     public Project() {
     }
@@ -47,6 +50,14 @@ public class Project {
 
     public void clearAbility() {
         this.abilities.clear();
+    }
+
+    public void addFile(FileEntity fileEntity) {
+        this.files.add(fileEntity);
+    }
+
+    public void addStudent(Student student) {
+        this.studentList.add(student);
     }
 
     public Long getId() {
@@ -133,5 +144,13 @@ public class Project {
 
     public void setWorkers(List<AcademicWorker> workers) {
         this.workers = workers;
+    }
+
+    public List<FileEntity> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<FileEntity> files) {
+        this.files = files;
     }
 }

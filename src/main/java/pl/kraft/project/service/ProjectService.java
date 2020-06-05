@@ -2,6 +2,7 @@ package pl.kraft.project.service;
 
 import org.springframework.data.domain.Page;
 import pl.kraft.ability.AbilityDto;
+import pl.kraft.file.FileEntityDto;
 import pl.kraft.project.ProjectDto;
 import pl.kraft.project.ProjectRegisterDto;
 import pl.kraft.student.StudentDto;
@@ -15,4 +16,5 @@ public interface ProjectService {
     ProjectDto saveProject(ProjectRegisterDto dto);
     List<AbilityDto> getProjectAbilities(Long id);
     List<StudentDto> getProjectStudents(Long id);
+    List<FileEntityDto> getAllFiles(Long id);
 }

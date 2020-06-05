@@ -25,5 +25,5 @@ public interface ProjectRepository extends PagingAndSortingRepository<Project, L
                     "AND p.completed = 'false' GROUP BY p.id_project",
             nativeQuery = true)
     Page<Project> findAllPagination(@Param("title") String title, @Param("ability") String ability, Pageable pageable);
-    List<Project> findTop3ByOrderByDateDesc();
+    List<Project> findTop3ByAndCompletedIsFalseOrderByDateDesc();
 }

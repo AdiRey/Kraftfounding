@@ -11,11 +11,10 @@ import pl.kraft.ability.AbilityRepository;
 import pl.kraft.exception.InvalidIdException;
 import pl.kraft.exception.web.InvalidAbilityException;
 import pl.kraft.exception.web.InvalidStudentException;
+import pl.kraft.file.FileEntityDto;
+import pl.kraft.file.FileEntityMapper;
 import pl.kraft.project.*;
-import pl.kraft.student.Student;
-import pl.kraft.student.StudentDto;
-import pl.kraft.student.StudentMapper;
-import pl.kraft.student.StudentRepository;
+import pl.kraft.student.*;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
@@ -40,7 +39,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<ProjectDto> getThreeLastAddedProjects() {
-        return projectRepository.findTop3ByOrderByDateDesc().stream().map(ProjectMapper::map).collect(Collectors.toList());
+        return projectRepository.findTop3ByAndCompletedIsFalseOrderByDateDesc().stream().map(ProjectMapper::map).collect(Collectors.toList());
     }
 
     @Override
@@ -102,6 +101,15 @@ public class ProjectServiceImpl implements ProjectService {
             Student student = studentRepository.findByEmail(dto.getStudent().getEmail()).get();
             project.setStudent(student);
             student.addMyProjects(project);
+            try{
+                for (StudentProjectDto found : dto.getStudents()) {
+                    Student getStudent = studentRepository.findById(found.getId()).get();
+                    getStudent.addProjects(project);
+                    project.addStudent(getStudent);
+                }
+            } catch (NoSuchElementException e){
+                throw new InvalidAbilityException();
+            }
             try {
                 for (AbilityDto dtoAb : dto.getAbilities()) {
                     Ability ability = abilityRepository.findByAbility(dtoAb.getAbility()).get();
@@ -113,6 +121,16 @@ public class ProjectServiceImpl implements ProjectService {
             }
         } catch (NoSuchElementException e) {
             throw new InvalidStudentException();
+        }
+    }
+
+    @Override
+    @Transactional
+    public List<FileEntityDto> getAllFiles(final Long id) {
+        try {
+            return projectRepository.findById(id).get().getFiles().stream().map(FileEntityMapper::map).collect(Collectors.toList());
+        } catch (NoSuchElementException e) {
+            throw new InvalidIdException();
         }
     }
 }

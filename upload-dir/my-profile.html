@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Projekty</title>
+    <meta name="description" content="Znajdz idealny projekt dla siebie" />
+    <meta name="keywords" content="projekt, projekty, politechnika-rzeszowska" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/styles3.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/fontello.css" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap&subset=latin-ext" rel="stylesheet" />
+	
+</head>
+<body onload="checkLogin()">
+    <header>
+
+        <nav class="navbar navbar-dark bg-jumpers navbar-expand-xl">
+
+            <a class="navbar-brand" href="#"><img src="../img/logo.png" width="60" height="60" class="d-inline-block mr-1 align-bottom" alt="Logo"></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse " id="mainmenu">
+
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link nav-color" href="/projects-offers"> Oferty projektowe </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link nav-color" href="/profiles"> Profile </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link nav-color" href="/faq"> FAQ </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link nav-color" href="/youtube"> YouTube </a>
+                    </li>
+
+                </ul>
+
+                <div id="user-logout" class="user-interface" style="display: none;">
+                    <div class="d-inline-block mr-1 align-middle">
+                        <a href="#" class="sign-up-link nav-color">Zarejestruj sie</a>
+                    </div>
+                    <div class="sign-in d-inline-block mr-1 align-middle">
+                        <a href="#">Zaloguj sie</a>
+                    </div>
+                </div>
+
+                <div id="user-login" class="user-interface-login" style="display: block;">
+                    <div class="d-inline-block mr-1 align-middle">
+                        <a href="#" id="user-login-menu" class="dropbtn sign-up-link nav-color user-login" onclick="usermenu()">Adam Kowalski</a>
+                        <div class="dropdown-user-menu" id="userDropdown">
+                            <a href="#">Twój profil</a>
+                            <a href="#">Twoje projekty</a>
+                            <a href="#">Ulubione</a>
+                            <a href="#">XYZ</a>
+                            <a href="#">Wyloguj</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+   <main>
+        <div class="container">
+			<div style="margin-top: 120px;">
+				<div class="profile-text">
+					<div class="row">
+						<div class="col-xs-6 col-md-2 col-lg-1">
+							<img class="avatar" src="..\img\avatar.jpg">
+						</div>
+						<div class="col-sm-12 col-md-6 col-lg-10">
+							<span style="font-size: 30px; font-weight: bold; display: block;">
+								<div id="nazwisko"></div>
+							</span>
+							<span style="font-size: 22px; font-weight: normal">
+								<div id="kierunek"></div>
+							</span>
+						</div>
+						<div class="options">
+							<div class="dropdown">
+								<a href="#" onclick="opcjeDropdown()" class="dropbtn">O</a>
+								<div id="opcje-dropdown" class="dropdown-user-menu">
+									<a href="edycja.html">Edytuj</a>
+								</div>
+							</div>
+                        </div>
+                        <div class="col-sm-12"><div id="opis">
+                        </div>
+                        </div>
+						
+						<div id="umiejetnosci">
+							Umiejętności:
+							<ul id="um">
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+        <br>
+    </main>
+    <footer>
+        <div class="footer">
+            Copyright © 2020 Kraftfunding S.A. Wszelkie prawa zastrzeżone.
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/my-profile.js"></script>
+</body>
+</html>

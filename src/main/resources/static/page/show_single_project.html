@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="../css/styles.css" type="text/css" />
     <link rel="stylesheet" href="../css/stylessingles.css" type="text/css" />
     <link rel="stylesheet" href="../css/fontello.css" type="text/css" />
+    <script src="../js/single_view.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap&subset=latin-ext" rel="stylesheet" />
 </head>
-<body onload="checkLoginX()">
+<body onload="checkLoginX(); checkUserLog()">
 <header>
 
     <nav class="navbar navbar-dark bg-jumpers navbar-expand-xl">
@@ -28,7 +29,7 @@
 
             <ul class="navbar-nav mr-auto">
 
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link nav-color" href="/projects-offers"> Oferty projektowe </a>
                 </li>
 
@@ -48,7 +49,8 @@
 
             <div id="user-logout" class="user-interface">
                 <div class="d-inline-block mr-1 align-middle">
-                    <a href="/sign-up" class="sign-up-link nav-color">Zarejestruj sie</a>
+                    <a href="#" class="sign-up-link nav-color" onclick="document.getElementById('id01').style.display='block';">
+                        Zarejestruj sie</a>
                 </div>
                 <div class="sign-in d-inline-block mr-1 align-middle">
                     <a href="/sign-in">Zaloguj sie</a>
@@ -57,12 +59,11 @@
 
             <div id="user-login" class="user-interface-login">
                 <div class="d-inline-block mr-1 align-middle">
-                    <a href="/my-profile" id="user-login-menu" class="dropbtn sign-up-link nav-color user-login" onclick="usermenu()">Adam Kowalski</a>
+                    <button id="user-login-menu" class="dropbtn sign-up-link nav-color user-login" onclick="usermenu()">Adam Kowalski</button>
                     <div class="dropdown-user-menu" id="userDropdown">
                         <a href="/my-profile">Twój profil</a>
-                        <a href="#">Twoje projekty</a>
-                        <a href="#">Ulubione</a>
-                        <a href="#">XYZ</a>
+                        <a href="/my-projects">Twoje projekty</a>
+                        <a href="/add-project">Dodaj projekt</a>
                         <a onclick="logout()" href="/">Wyloguj</a>
                     </div>
                 </div>
@@ -74,7 +75,7 @@
 </header>
 
     <main>
-        <div class="container" style="position:absolute; top:20%; left:20%">
+        <div class="container" style="margin-top: 150px">
             <div class="project">
                 <div class="header-project">
                     <div id="name-project">
@@ -91,24 +92,31 @@
                 </div>
 
                 <div class="body-project">
-                    <div class="opis">
+                    <div class="opis" style="border-bottom: white dashed 1px">
 
                     </div>
                     <div class="row">
-                        <div class="members col-sm-3">
-                             Członkowie:
+                        <div class="col-sm-3" id="members">
+                            Członkowie:
                         </div>
-                        <div class="competences col-sm-3">
-                             Kompetencje:
+                        <div class="col-sm-3" id="competences">
+                            Kompetencje:
                         </div>
-                        <div class="files col-sm-3">
+                        <div class="col-sm-3" id="files">
                             Pliki:
                         </div>
                     </div>
                 </div>
+
                 <div class="footer-project" style="clear: both">
-                    <div class="button-check" onclick="zglos()">
+                    <div class="button-check zglos" onclick="zglos()">
                         <a href="#">Zgłoś się!</a>
+                    </div>
+                    <div class="button-check pomoc" onclick="helpMe()">
+                        <a href="#">Zaproponuj pomoc</a>
+                    </div>
+                    <div class="button-check uwagaDiv" onclick="ahtung()">
+                        <a href="#">Zgłoś uwagę</a>
                     </div>
                 </div>
             </div>
@@ -119,14 +127,11 @@
             Copyright © 2020 Kraftfunding S.A. Wszelkie prawa zastrzeżone.
         </div>
     </footer>
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-
+    <script src="../ckeditor/ckeditor.js"></script>
+    <script src="../ckeditor/adapters/jquery.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/single_view.js"></script>
     <script src="../js/jwt-decode.min.js"></script>
-    <script src="../js/user-login.js" type="text/javascript"></script>
 </body>
 </html>

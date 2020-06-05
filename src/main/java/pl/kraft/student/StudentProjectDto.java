@@ -7,11 +7,8 @@ import javax.validation.constraints.Null;
 public class StudentProjectDto {
     @Null(message = "Id has to be null.")
     private Long id;
-    @NotBlank(message = "Name may not be blank")
     private String name;
-    @NotBlank(message = "Surname may not be blank")
     private String surname;
-    @Email(message = "Email has to be correct.")
     private String email;
 
     public StudentProjectDto() {

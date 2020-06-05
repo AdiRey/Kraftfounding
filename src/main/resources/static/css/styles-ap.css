@@ -77,7 +77,7 @@ a{
 }
 .input-name
 {
-    width: 500px;
+    width: 50%;
     background-color: #A0A0A0;
     border-radius: 15px;
     margin-top: 10px;
@@ -102,7 +102,7 @@ a{
 
 .input-description
 {
-    width: 1000px;
+    width: 90%;
     min-height: 100px;
     background-color: #A0A0A0;
     border-radius: 15px;

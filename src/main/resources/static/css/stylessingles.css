@@ -24,3 +24,15 @@
 .opis {
     min-height: 100px;
 }
+
+.footer-project{
+    min-height: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+@media screen and (max-width: 576px) {
+    .footer-project{
+        flex-direction: column;
+        align-items: center;
+    }
+}

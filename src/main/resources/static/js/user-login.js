@@ -6,7 +6,7 @@ function checkLogin(){
     }else{
         let decoded = jwt_decode(authentication.substr(7));
         user.name = decoded.sub;
-        document.getElementById("user-login-menu").textContent = user.name;
+        document.getElementById("user-login-menu").textContent = user.name.replace(/![0-9]+/,"");
         document.getElementById("user-logout").style.display = "none";
         document.getElementById("user-login").style.display = "block";
     }
