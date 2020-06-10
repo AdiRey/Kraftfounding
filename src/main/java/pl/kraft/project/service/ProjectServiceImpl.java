@@ -64,14 +64,16 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Page<ProjectDto> getAllNotCompletedProjects(final int numberOfPage, final String sortText, final String text) {
+    @Transactional
+    public Page<ProjectDto> getAllNotCompletedProjects(final int numberOfPage, final int size, final String sortText,
+                                                       final String text, final String abilityName) {
         Sort sort;
         if (sortText.equals("DESC"))
-            sort = Sort.by(new Sort.Order(Sort.Direction.DESC, "title"));
+            sort = Sort.by(new Sort.Order(Sort.Direction.DESC, "date"));
         else
-            sort = Sort.by(new Sort.Order(Sort.Direction.ASC, "title"));
-        return projectRepository.findAllByTitleContainingIgnoreCaseAndCompletedIsFalse
-                (text, PageRequest.of(numberOfPage, 20, sort)).map(ProjectMapper::map);
+            sort = Sort.by(new Sort.Order(Sort.Direction.ASC, "date"));
+        return projectRepository.findAllPagination(
+                text, abilityName, PageRequest.of(numberOfPage, size, sort)).map(ProjectMapper::map);
     }
 
     @Override

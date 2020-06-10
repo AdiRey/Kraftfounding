@@ -1,7 +1,4 @@
-userIcon = '<svg class="bi bi-person-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">< path fill - rule="evenodd" d = "M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z" clip - rule="evenodd" /></svg >';
-
-let token = localStorage.getItem("Authorization");
-
+userIcon = '../img/icon.png';
 function wypisz(item) {
     el = document.createElement("li");
     el.style.float = "left";
@@ -10,13 +7,13 @@ function wypisz(item) {
     el.style.listStyleType = 'none';
     el2 = document.createElement("img");
     el2.style.float = "left";
-    el2.setAttribute("src", "../img/abc.jpg");
+    el2.setAttribute("src", userIcon);
     el2.style.width = '20px';
     el2.style.height = '20px';
     el3 = document.createElement("span");
     el3.style.marginLeft = '5%';
     el3.style.float = "left";
-    el3.innerText = item.members;
+    el3.innerText = item.name + item.surname;
     el.appendChild(el2);
     el.appendChild(el3);
     document.querySelectorAll('.members')[0].appendChild(el);
@@ -30,7 +27,7 @@ function wypiszKompetencje(item) {
     el3 = document.createElement("span");
     el3.style.marginLeft = '5%';
     el3.style.float = "left";
-    el3.innerText = item.competences;
+    el3.innerText = item.ability;
     el.appendChild(el3);
     document.querySelectorAll('.competences')[0].appendChild(el);
 }
@@ -47,24 +44,71 @@ function wypiszPliki(item) {
     el.appendChild(el3);
     document.querySelectorAll('.files')[0].appendChild(el);
 }
-fetch("/api/projects", {
-    headers: {
-        "Authorization" : token
+
+function checkLoginX(){
+    let authenticationX = localStorage.getItem("Authorization");
+    if (authenticationX === null){
+        document.getElementById("user-logout").style.display = "block";
+        document.getElementById("user-login").style.display = "none";
+    }else{
+        let decoded = jwt_decode(authenticationX.substr(7));
+        user = decoded.sub;
+        document.getElementById("user-login-menu").textContent = user;
+        document.getElementById("user-logout").style.display = "none";
+        document.getElementById("user-login").style.display = "block";
     }
+}
+
+identyfikator = 1;
+adres_projektu = "/api/projects/" + identyfikator + "/students";
+fetch(adres_projektu,  {
+    headers: {
+        "Authorization" : localStorage.getItem("Authorization")
+}
 })
     .then(response => response.json())
     .then(response => {
         userData = JSON.parse(JSON.stringify(response));
         let myHeading = document.querySelectorAll('.author-project');
-        myHeading[0].textContent = userData[0].name;
-        document.querySelectorAll('.body-project')[0].textContent = userData[1].description;
-        document.querySelectorAll('#name-project')[0].textContent = userData[1].name;
-        document.querySelectorAll('.date-project')[0].textContent = userData[1].date;
+        myHeading[0].textContent = userData[0].name + ' ' + userData[0].surname;
         userData.forEach(wypisz);
-        userData.forEach(wypiszKompetencje);
-        userData.forEach(wypiszPliki);
+        //userData.forEach(wypiszPliki);
+    })
+    .catch(error => {
+        console.error(error);
+        // alert("Nie masz dostêpu! Zaloguj siê!");
+        // window.location.replace("/sign-in");
     })
 
+fetch("/api/projects/" + identyfikator, {
+    headers: {
+        "Authorization": localStorage.getItem("Authorization")
+        }
+    })
+    .then(response => response.json())
+    .then(response => {
+        projectData = JSON.parse(JSON.stringify(response));
+        console.log(projectData.description);
+        document.querySelectorAll('.body-project')[0].textContent = projectData.description;
+        document.querySelectorAll('#name-project')[0].textContent = projectData.title;
+        document.querySelectorAll('.date-project')[0].textContent = projectData.date;
+    })
+    .catch(error => {
+        console.error(error);
+    })
+fetch("/api/projects/" + identyfikator + "/abilities", {
+    headers: {
+        "Authorization" : localStorage.getItem("Authorization")
+    }
+})
+    .then(response => response.json())
+    .then(response => {
+        userData = JSON.parse(JSON.stringify(response));
+        userData.forEach(wypiszKompetencje);
+    })
+    .catch(error => {
+        console.error(error);
+    })
 
 function usermenu() {
     document.getElementById("userDropdown").classList.toggle("show");
@@ -77,4 +121,20 @@ window.onclick = function (e) {
             myDropdown.classList.remove('show');
         }
     }
+}
+
+async function postData(url = '', data = {}) {
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    return response.json();
+}
+
+function zglos() {
+    var id = 1;
+    return postData('/api/...',id)
 }

@@ -33,7 +33,6 @@ let project_DataString;
 let fileProject;
 let fileProjectString;
 const url = "https://jsonplaceholder.typicode.com/posts";
-let token = localStorage.getItem("Authorization");
 //zamiana obiektu na JSON
 function JSONFromForm() {
     const now = new Date();

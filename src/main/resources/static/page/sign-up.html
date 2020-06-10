@@ -25,6 +25,11 @@
             background-size: cover;
         }
     </style>
+    <script>
+        if (localStorage.getItem("Authorization") != null) {
+            window.location.href="/";
+        }
+    </script>
 </head>
 <body>
 <div class="bg"></div>

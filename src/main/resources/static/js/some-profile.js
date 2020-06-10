@@ -1,4 +1,3 @@
-let token = localStorage.getItem("Authorization");
 
 function opcjeDropdown() {
     document.getElementById("opcje-dropdown").classList.toggle("show");
@@ -20,7 +19,7 @@ window.onclick = function (event) {
 
 fetch("/api/students/1", {
     headers: {
-        "Authorization" : token
+        "Authorization" : localStorage.getItem("Authorization")
     }
 })
     .then(response => response.json())
