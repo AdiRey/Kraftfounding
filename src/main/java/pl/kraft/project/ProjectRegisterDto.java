@@ -20,6 +20,7 @@ public class ProjectRegisterDto {
     private String description;
     @Valid
     private StudentProjectDto student;
+    private List<StudentProjectDto> students = new ArrayList<>();
     @Min(value = 1, message = "Minimum value is 1.")
     @Max(value = 100, message = "Maximum value is 100.")
     private Integer limit;
@@ -83,5 +84,13 @@ public class ProjectRegisterDto {
 
     public void setAbilities(List<AbilityDto> abilities) {
         this.abilities = abilities;
+    }
+
+    public List<StudentProjectDto> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<StudentProjectDto> students) {
+        this.students = students;
     }
 }

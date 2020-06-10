@@ -180,17 +180,7 @@ li
 }
 /*okienko logowania*/
 
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    font-size: 50px;
-    font-style: italic;
-}
+
 button:hover {
     -webkit-box-shadow: 0px 0px 45px 3px rgba(255,255,255,1);
     -moz-box-shadow: 0px 0px 45px 3px rgba(255,255,255,1);
@@ -203,10 +193,19 @@ button:hover {
 }
 
 #studentbtn, #pracownikbtn {
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 50px;
+    font-style: italic;
     margin-top: 120px;
     height: 450px;
     float: left;
     width: 50%;
+}
+#pracownikbtn{
+    background-color: #4CAF50;
 }
 
 .container1 {
@@ -247,4 +246,22 @@ button:hover {
     content: "";
     clear: both;
     display: table;
+}
+
+#user-login-menu {
+    border: 0;
+    padding: 5px;
+    border-radius: 2px;
+    background-color: white;
+}
+#user-login-menu:hover {
+    cursor: pointer;
+}
+
+#user-login-menu:active {
+    outline-color: lightgray;
+}
+
+#user-login-menu:focus {
+    outline-color: lightgray;
 }

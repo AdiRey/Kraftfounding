@@ -48,7 +48,7 @@
 
             <div id="user-logout" class="user-interface">
                 <div class="d-inline-block mr-1 align-middle">
-                    <a href="#" class="sign-up-link nav-color">Zarejestruj sie</a>
+                    <a href="#" class="sign-up-link nav-color" onclick="document.getElementById('id01').style.display='block';">Zarejestruj sie</a>
                 </div>
                 <div class="sign-in d-inline-block mr-1 align-middle">
                     <a href="#">Zaloguj sie</a>
@@ -57,7 +57,7 @@
 
             <div id="user-login" class="user-interface-login">
                 <div class="d-inline-block mr-1 align-middle">
-                    <a href="#" id="user-login-menu" class="dropbtn sign-up-link nav-color user-login" onclick="usermenu()">Adam Kowalski</a>
+                    <button id="user-login-menu" class="dropbtn sign-up-link nav-color user-login" onclick="usermenu()">Adam Kowalski</button>
                     <div class="dropdown-user-menu" id="userDropdown">
                         <a href="/my-profile">Twój profil</a>
                         <a href="#">Twoje projekty</a>
@@ -76,42 +76,44 @@
 
     <main>
         <div class="container">
+            <div id="id01" class="modal">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Zamknij">X</span>
+                <div class="container1">
+                    <div class="clearfix">
+                        <button type="button" onclick="window.location.href='/sing-up-student'" id="studentbtn">Student</button>
+                        <button type="button" onclick="window.location.href='/sing-up-worker'" id="pracownikbtn">Pracownik akademicki</button>
+                    </div>
+                </div>
+            </div>
             <div class="content-projects">
                 <div style="margin-top: 120px;">
                     <div class="faq-text">FAQ</div>
-                    <button class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</button>
+                    <button class="faq-title">Na czym polega Kraftfounding?</button>
                     <div class="faq-panel">
-                        <p1 >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.</p1>
+                        <p1 >Aplikacja ma pozwalać studentom ułatwiać znalezienie członków grupy projektowej oraz
+                            umożliwić dołączenie do projektu.
+                        </p1>
                     </div>
 
-                    <button class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</button>
+                    <button class="faq-title">Co powinno znajdować się w opisie projektu?</button>
                     <div class="faq-panel">
-                        <p1>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.</p1>
+                        <p1>W opisie projektu powinna znajdować się jego specyfikacja, planowany czas trwania oraz
+                            wszelkie niezbędne szczegóły.</p1>
                     </div>
 
-                    <button class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</button>
+                    <button class="faq-title">Czy można edytować opis projektu?</button>
                     <div class="faq-panel">
-                        <p1>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.</p1>
+                        <p1>Edycja projektu jest dozwolona.</p1>
                     </div>
 
-                    <button class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</button>
+                    <button class="faq-title">Czy można zmieniać potrzeby w projekcie w trakcie realizacji?</button>
                     <div class="faq-panel">
-                        <p1>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.</p1>
+                        <p1>Edycja potrzeb projektu w trakcie realizacji jest dozwolona.</p1>
                     </div>
 
-                    <button class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</button>
+                    <button class="faq-title">Dlaczego nie mogę przeglądać profili i projektów</button>
                     <div class="faq-panel">
-                        <p1>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat.</p1>
+                        <p1>Aby móc przeglądać te strony wymagane jest zalogowanie się do aplikacji.</p1>
                     </div>
 
                     <button class="faq-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</button>
@@ -168,5 +170,14 @@
     <script src="../js/main.js"></script>
     <script src="../js/jwt-decode.min.js"></script>
     <script src="../js/user-login.js" type="text/javascript"></script>
+    <script>
+        let modal = document.getElementById('id01');
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>

@@ -7,21 +7,21 @@
     float:right;
     margin-right:10px;
                 }
-.members {
+#members {
     float: left;
     width: 33.3%;
     min-width: 250px;
     min-height: 250px;
 }
 
-.competences {
+#competences {
     float: left;
     width: 33.3%;
     min-width: 250px;
     min-height: 250px;
 }
 
-.files {
+#files {
     float: left;
     width: 33.4%;
     min-width: 250px;

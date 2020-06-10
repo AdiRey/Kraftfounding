@@ -9,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import pl.kraft.ability.AbilityDto;
+import pl.kraft.file.FileEntityDto;
 import pl.kraft.project.ProjectDto;
 import pl.kraft.project.ProjectRegisterDto;
 import pl.kraft.project.service.ProjectService;
@@ -41,12 +42,10 @@ public class ProjectController {
                                        @RequestParam(required = false, defaultValue = "20") final Integer size,
                                        @RequestParam(required = false, defaultValue = "ASC") final String sort,
                                        @RequestParam(required = false, defaultValue = "") final String filter,
-                                           @RequestBody(required = false) final AbilityDto ability) {
-        String abilityName = "";
-        if (ability != null) {
-            abilityName = ability.getAbility();
-        }
-        return projectService.getAllNotCompletedProjects(page, size, sort, filter, abilityName);
+                                           @RequestParam(required = false, defaultValue = "") String ability) {
+        if (ability.equals("disabled"))
+            ability = "";
+        return projectService.getAllNotCompletedProjects(page, size, sort, filter, ability);
     }
 
     @GetMapping("/{id}")
@@ -57,6 +56,11 @@ public class ProjectController {
     @GetMapping("/{id}/abilities")
     public List<AbilityDto> getProjectAbilitiesById(@PathVariable(name = "id") final Long id) {
         return projectService.getProjectAbilities(id);
+    }
+
+    @GetMapping("/{id}/files")
+    public List<FileEntityDto> getAllFilesById(@PathVariable(name = "id") final Long id) {
+        return projectService.getAllFiles(id);
     }
 
     @GetMapping("/{id}/students")

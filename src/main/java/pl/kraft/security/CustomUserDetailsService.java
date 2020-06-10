@@ -40,7 +40,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (foundStudent.isPresent()) {
             Student student = foundStudent.get();
             return new org.springframework.security.core.userdetails.User(
-                    student.getEmail(),
+                    student.getEmail() + "!" + student.getId(),
                     student.getPassword(),
                     convertAuthorities(List.of("student", "prz", "kraft"))
             );
@@ -57,7 +57,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (foundWorker.isPresent()) {
             AcademicWorker academicWorker = foundWorker.get();
             return new org.springframework.security.core.userdetails.User(
-                    academicWorker.getEmail(),
+                    academicWorker.getEmail() + "!" + academicWorker.getId(),
                     academicWorker.getPassword(),
                     convertAuthorities(List.of("worker", "prz", "knowledge"))
             );

@@ -1,4 +1,5 @@
 //obiekt
+let tokenX = localStorage.getItem("Authorization");
 let project_Data = {
     "date": null,
     "description": "",
@@ -23,11 +24,47 @@ let userData = {
 let member = {
     "content": [
         {
+            "id":null,
             "name": null,
             "surname": null
         }
     ]
+};
+
+let jsonToAddProject = {
+    "abilities": [],
+    "completed":false,
+    "description": "",
+    "limit":100,
+    "student": [],
+    "title":null
 }
+
+let jsonToFileAdd = {
+    "id":null
+}
+let projectStringToAdd;
+function JSONFromFormAddProject() {
+    let abilitiesSelect = document.forms['abilities'];
+    for (let i = 0; i < abilitiesSelect.length; i++) {
+        if (abilitiesSelect.options[i].checked) {
+            jsonToAddProject.abilities.push({"ability": abilitiesSelect.options[i].value}) //+= poleSelect.options[i].value;
+        }
+    }
+    jsonToAddProject.description = document.getElementById('description').value;
+    jsonToAddProject.limit = 100;
+
+    let userAddProject = ListItems2;
+    for (let i = 0; i < userAddProject.length; i++) {
+        jsonToAddProject.abilities.push({"id": userAddProject[i]}) //+= poleSelect.options[i].value;
+    }
+    jsonToAddProject.student.email = jwt_decode(localStorage.getItem("Authorization").substr(7)).sub;
+    jsonToAddProject.title = document.getElementById('name').value;
+    projectStringToAdd = JSON.stringify(jsonToAddProject);
+    console.log(projectStringToAdd);
+}
+var ListItems2 = new Array();
+
 //stałe i zmienne
 let project_DataString;
 let fileProject;
@@ -51,7 +88,7 @@ function JSONFromForm() {
     console.log(project_DataString);
 }
 
-function file() {
+function file1() {
     fileProject = document.getElementById('file').value;
     fileProjectString = JSON.stringify(fileProject);
     console.log(fileProjectString)
@@ -64,61 +101,26 @@ function send() {
         headers: {
             "Authorization" : token
         },
-        body: project_DataString
+        body: projectStringToAdd
     })
         .then(res => res.json())
         .then(res => {
-            alert("Wysłano")
-            console.log("Dodałem projekt:");
-            console.log(res);
-        })
-        .catch(error => console.log("Błąd: ", error));
-    fetch("/api/files", {
-        method: "post",
-        headers: {
-            "Authorization" : token
-        },
-        body: fileProjectString
-    })
-        .then(res => res.json())
-        .then(res => {
-            alert("Wysłano")
-            console.log("Dodałem plik:");
-            console.log(res);
+            jsonToFileAdd= JSON.parse(JSON.stringify(res));
+            fetch("/api/project/" +jsonToFileAdd.id + "/files", {
+                method: "PUT",
+                headers: {
+                    "Authorization" : token
+                },
+                body: fileProjectString
+            })
+                .catch(error => console.log("Błąd: ", error));
         })
         .catch(error => console.log("Błąd: ", error));
 }
 
 function add_project() {
-    var name = document.getElementById('name').value;
-    var description = document.getElementById('description').value;
-    var added = document.forms['list'].elements['added'];
-    var members = new Array();
-    for (var i = 0; i < added.options.length; i++) {
-        members[i] = added.options[i].value;
-    }
-    var abilities = new Array();
-    for (var i = 0; i < 10; i++) {
-        var id = "c" + (i + 1);
-        abilities[i] = document.getElementById(id);
-    }
-    var file = document.getElementById('file').value;
-    var project = "Nazwa: " + name + "\nOpis: " + description + "\nCzłonkowie:\n";
-    for (var i = 0; i < members.length; i++) {
-        project = project + members[i] + "\n";
-    }
-    project = project + "Kompetencje:\n";
-    for (var i = 0; i < abilities.length; i++) {
-        if (abilities[i].checked == true)
-            project = project + abilities[i].value + "\n";
-    }
-    project = project + "Plik: " + file;
-    // alert(project);
-
-    JSONFromForm();
-    alert("Chyba dodałem");
-    file();
-
+    JSONFromFormAddProject();
+    file1();
     send();
 }
 
@@ -138,14 +140,13 @@ function add() {
 function remove() {
     var added = document.forms['list'].elements['added'];
     var to_add = document.forms['list'].elements['to_add'];
-    var ListItems = new Array();
     for (var i = (added.options.length - 1); i >= 0; i--)
         if (added.options[i].selected) {
-            ListItems[ListItems.length] = new Option(added.options[i].text);
+            ListItems2[ListItems2.length] = new Option(added.options[i].text);
             added.options[i] = null;
         }
-    for (var i = ListItems.length - 1; i >= 0; i--)
-        to_add.options[to_add.options.length] = ListItems[i];
+    for (var i = ListItems2.length - 1; i >= 0; i--)
+        to_add.options[to_add.options.length] = ListItems2[i];
 }
 
 /*ładowanie danych do formularza*/
@@ -155,7 +156,7 @@ function funLoadMembers() {
 
     fetch("/api/students", {
         headers: {
-            "Authorization" : token
+            "Authorization" : tokenX
         }
     })
         .then(response => response.json())
@@ -174,7 +175,7 @@ function funLoadAbilities_() {
     }
     fetch("/api/abilities", {
         headers: {
-            "Authorization" : token
+            "Authorization" : tokenX
         }
     })
         .then(response => response.json())

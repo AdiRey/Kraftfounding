@@ -1,6 +1,7 @@
 package pl.kraft.student;
 
 import pl.kraft.ability.Ability;
+import pl.kraft.file.FileEntity;
 import pl.kraft.project.Project;
 import pl.kraft.subject.Subject;
 
@@ -29,7 +30,7 @@ public class Student {
     private Integer availability;
     @Column(name = "interests", length = 250)
     private String interests;
-    @Column(name = "image_url", columnDefinition = "varchar(250) default 'BASIC URL TO PHOTO'")
+    @Column(name = "image_url", columnDefinition = "varchar(100) default 'icon.png'")
     private String imageUrl;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_subject", nullable = false)
@@ -40,6 +41,9 @@ public class Student {
     private List<Project> myProjects = new ArrayList<>();
     @ManyToMany(mappedBy = "studentList", fetch = FetchType.LAZY)
     private List<Project> projects = new ArrayList<>();
+    //Lista plików w bazie danych należących do użytkownika
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+    private List<FileEntity> myFiles = new ArrayList<>();
 
     public Student() {
     }
@@ -54,6 +58,14 @@ public class Student {
 
     public void addMyProjects(Project project) {
         this.myProjects.add(project);
+    }
+
+    public void addFile(FileEntity fileEntity) {
+        this.myFiles.add(fileEntity);
+    }
+
+    public void addProjects(Project project) {
+        this.projects.add(project);
     }
 
     public Long getId() {
@@ -158,5 +170,13 @@ public class Student {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public List<FileEntity> getMyFiles() {
+        return myFiles;
+    }
+
+    public void setMyFiles(List<FileEntity> myFiles) {
+        this.myFiles = myFiles;
     }
 }

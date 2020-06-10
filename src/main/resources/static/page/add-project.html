@@ -28,7 +28,7 @@
 
             <ul class="navbar-nav mr-auto">
 
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link nav-color" href="/projects-offers"> Oferty projektowe </a>
                 </li>
 
@@ -37,7 +37,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link nav-color" href="/faq"> FAQ </a>
+                    <a class="nav-link nav-color" onclick="" href="/faq"> FAQ </a>
                 </li>
 
                 <li class="nav-item">
@@ -48,7 +48,8 @@
 
             <div id="user-logout" class="user-interface">
                 <div class="d-inline-block mr-1 align-middle">
-                    <a href="/sign-up" class="sign-up-link nav-color">Zarejestruj sie</a>
+                    <a href="#" class="sign-up-link nav-color" onclick="document.getElementById('id01').style.display='block';">
+                        Zarejestruj sie</a>
                 </div>
                 <div class="sign-in d-inline-block mr-1 align-middle">
                     <a href="/sign-in">Zaloguj sie</a>
@@ -57,13 +58,12 @@
 
             <div id="user-login" class="user-interface-login">
                 <div class="d-inline-block mr-1 align-middle">
-                    <a href="#" id="user-login-menu" class="dropbtn sign-up-link nav-color user-login" onclick="usermenu()">Adam Kowalski</a>
+                    <button id="user-login-menu" class="dropbtn sign-up-link nav-color user-login" onclick="usermenu()">Adam Kowalski</button>
                     <div class="dropdown-user-menu" id="userDropdown">
                         <a href="/my-profile">Twój profil</a>
-                        <a href="#">Twoje projekty</a>
-                        <a href="#">Ulubione</a>
-                        <a href="#">XYZ</a>
-                        <a href="/logout">Wyloguj</a>
+                        <a href="/my-projects">Twoje projekty</a>
+                        <a href="/add-project">Dodaj projekt</a>
+                        <a onclick="logout()" href="/">Wyloguj</a>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,6 @@
         </div>
 
     </nav>
-
 </header>
 
 <main>
